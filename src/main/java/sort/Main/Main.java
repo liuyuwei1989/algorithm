@@ -11,12 +11,16 @@ import static sort.util.SortHelper.*;
 public class Main {
 
     public static void main(String[] args) {
-        int[] arr = generateArray(1000000, 1, 200000000);
-        sort(new MergeSortBU(), arr);
+        int[] arr = generateArray(1000000, 1, 2);
+        /*sort(new MergeSortBU(), arr);*/
         sort(new MergeSort(), arr);
+        sort(new Quick(), arr);
         /*sort(new BetterInsertion(), arr);
         sort(new Insertion(), arr);
         sort(new Selection(), arr);*/
+        /*int[] nealyOrderedArray = generateNearlyOrderedArray(100000000, 1, 200000000);
+        sort(new MergeSort(), nealyOrderedArray);
+        sort(new Quick(), nealyOrderedArray);*/
     }
 
     public static void sort(Sort sort, int[] integers) {

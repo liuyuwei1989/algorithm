@@ -1,5 +1,7 @@
 package sort.util;
 
+import sort.impl.Quick;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,6 +22,22 @@ public class SortHelper {
         Random random = new Random();
         for (int s = 0; s < i; s++) {
             integers[s] = left + random.nextInt(right - left);
+        }
+        return integers;
+    }
+
+    public static int[] generateNearlyOrderedArray(int i, int left, int right) {
+        Quick quick = new Quick();
+        int[] integers = new int[i];
+        Random random = new Random();
+        for (int s = 0; s < i; s++) {
+            integers[s] = left + random.nextInt(right - left);
+        }
+        quick.sort(integers);
+        for (int j = 2; j >= 0; j--) {
+            int a = random.nextInt(i);
+            int b = random.nextInt(i);
+            swap(integers, a, b);
         }
         return integers;
     }
