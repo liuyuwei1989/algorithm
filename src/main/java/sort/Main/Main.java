@@ -4,6 +4,8 @@ import sort.Sort;
 import sort.impl.*;
 import sort.util.SortHelper;
 
+import java.util.ArrayList;
+
 import static java.util.Arrays.copyOf;
 
 import static sort.util.SortHelper.*;
@@ -11,18 +13,19 @@ import static sort.util.SortHelper.*;
 public class Main {
 
     public static void main(String[] args) {
-        int[] arr = generateArray(100, 1, 5);
+        int[] arr = generateArray(1000000, 1, 20000000);
         /*sort(new MergeSortBU(), arr);*/
         sort(new MergeSort(), arr);
         /*sort(new Quick(), arr);*/
-        sort(new DoubleQuick(), arr);
         sort(new TripleQuick(), arr);
+        sort(new HeapSort(arr.length),arr);
         /*sort(new BetterInsertion(), arr);
         sort(new Insertion(), arr);
         sort(new Selection(), arr);*/
-        /*int[] nealyOrderedArray = generateNearlyOrderedArray(100000000, 1, 200000000);
+        int[] nealyOrderedArray = generateNearlyOrderedArray(1000000, 1, 200000000);
         sort(new MergeSort(), nealyOrderedArray);
-        sort(new Quick(), nealyOrderedArray);*/
+        sort(new TripleQuick(), nealyOrderedArray);
+        sort(new HeapSort(nealyOrderedArray.length),nealyOrderedArray);
     }
 
     public static void sort(Sort sort, int[] integers) {
