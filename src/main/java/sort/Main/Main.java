@@ -11,11 +11,12 @@ import static sort.util.SortHelper.*;
 public class Main {
 
     public static void main(String[] args) {
-        int[] arr = generateArray(1000000, 1, 2);
+        int[] arr = generateArray(100, 1, 5);
         /*sort(new MergeSortBU(), arr);*/
         sort(new MergeSort(), arr);
         /*sort(new Quick(), arr);*/
         sort(new DoubleQuick(), arr);
+        sort(new TripleQuick(), arr);
         /*sort(new BetterInsertion(), arr);
         sort(new Insertion(), arr);
         sort(new Selection(), arr);*/
@@ -31,6 +32,6 @@ public class Main {
         helper.start(name);
         sort.sort(arr);
         helper.end(name);
-        assert assertArray(arr) : sort.getClass().getName() + " arr is error\n" ;
+        assert assertArray(arr) : sort.getClass().getName() + " arr is error\n";
     }
 }
