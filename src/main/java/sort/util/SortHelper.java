@@ -57,6 +57,15 @@ public class SortHelper {
         return true;
     }
 
+    public static boolean assertArray(Integer[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < arr[i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void start(String stepName) {
         timer.put(stepName, System.currentTimeMillis());
     }
@@ -64,6 +73,14 @@ public class SortHelper {
     public void end(String stepName) {
         Long time = System.currentTimeMillis() - timer.get(stepName);
         System.out.println(stepName + " time : " + time / 1000.0 + "s");
+    }
+
+    public static Integer[] convert(int[] arr) {
+        Integer[] tmp = new Integer[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            tmp[i] = arr[i];
+        }
+        return tmp;
     }
 
     public SortHelper() {

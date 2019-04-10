@@ -2,6 +2,7 @@ package heap;
 
 import heap.exception.OutOfHeapBoundException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public abstract class Heap<T extends Comparable> {
@@ -18,6 +19,15 @@ public abstract class Heap<T extends Comparable> {
         maxNum = n;
         this.data = new Object[n + 1];
         this.count = 0;
+    }
+
+    public Heap(T[] arr) {
+        maxNum = arr.length;
+        data = new ArrayList<T>() {{
+            add(arr[0]);
+            addAll(Arrays.asList(arr));
+        }}.toArray();
+        count = arr.length;
     }
 
     public boolean isEmpty() {

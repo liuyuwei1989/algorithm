@@ -8,7 +8,6 @@ import static heap.util.Util.swap;
 public class CompletelyMaxHeap<T extends Comparable> extends Heap<T> {
 
     @Override
-    @SuppressWarnings("unchecked")
     public void addItem(T item) throws OutOfHeapBoundException {
 
         if (item == null)
@@ -17,13 +16,17 @@ public class CompletelyMaxHeap<T extends Comparable> extends Heap<T> {
             throw new OutOfHeapBoundException("Heap is full, can't add more item");
         } else {
             data[++count] = item;
-            int fatherIndex = (count) / 2;
-            int index = count;
-            while (fatherIndex != 0 && ((T) data[fatherIndex]).compareTo(data[index]) < 0) {
-                swap(data, fatherIndex, index);
-                index = fatherIndex;
-                fatherIndex = index / 2;
-            }
+            shiftUp(count);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private void shiftUp(int index) {
+        int fatherIndex = (index) / 2;
+        while (fatherIndex != 0 && ((T) data[fatherIndex]).compareTo(data[index]) < 0) {
+            swap(data, fatherIndex, index);
+            index = fatherIndex;
+            fatherIndex = index / 2;
         }
     }
 
@@ -35,8 +38,12 @@ public class CompletelyMaxHeap<T extends Comparable> extends Heap<T> {
         }
         T item = (T) data[1];
         data[1] = data[count--];
-        T tmpItem = (T) data[1];
-        int index = 1;
+        shiftDown(1);
+        return item;
+    }
+
+    private void shiftDown(int index) {
+        T tmpItem = (T) data[index];
         while (2 * index <= count) {
             int tmp = index;
             int k2 = 2 * index;
@@ -51,11 +58,21 @@ public class CompletelyMaxHeap<T extends Comparable> extends Heap<T> {
             else break;
         }
         data[index] = tmpItem;
-        return item;
     }
 
     public CompletelyMaxHeap(int n) {
         super(n);
+    }
+
+    public CompletelyMaxHeap(T[] arr) {
+        super(arr);
+    }
+
+    public void heap() {
+        int last = count / 2;
+        for (int i = last; i >= 1; i--) {
+            shiftDown(i);
+        }
     }
 
 }
