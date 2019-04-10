@@ -33,7 +33,7 @@ public class Quick implements Sort {
         __sort(arr, p + 1, r);
     }
 
-    private int findPosition(int[] arr, int l, int r) {
+    protected int findPosition(int[] arr, int l, int r) {
         // nearly ordered array sort
         swap(arr, l, l + random.nextInt(r - l + 1));
         int v = arr[l];
