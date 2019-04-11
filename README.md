@@ -1,2 +1,2 @@
-# algothm
-Self study for algothm. Don't worry about this repo if you are not interested in.
+# Algorithm
+Self study for algorithm. Don't worry about this repo if you are not interested in.

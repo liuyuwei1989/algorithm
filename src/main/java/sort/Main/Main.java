@@ -16,21 +16,25 @@ public class Main {
     public static void main(String[] args) throws OutOfHeapBoundException {
         int[] arr = generateArray(1000000, 1, 20000000);
         Integer[] arrs = convert(arr);
-        /*sort(new MergeSortBU(), arr);*/
+        sort(arr, arrs);
+        int[] arr_1 = generateArray(1000000, 1, 20);
+        Integer[] arrs_1 = convert(arr);
+        sort(arr_1, arrs_1);
+        int[] nealyOrderedArray = generateNearlyOrderedArray(1000000, 1, 200000000);
+        Integer[] nealyOrderedArrays = convert(nealyOrderedArray);
+        sort(nealyOrderedArray, nealyOrderedArrays);
+
+    }
+
+    public static void sort(int[] arr, Integer[] arrs) throws OutOfHeapBoundException {
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         sort(new MergeSort(), arr);
-        /*sort(new Quick(), arr);*/
         sort(new TripleQuick(), arr);
         sort(new HeapSort(arr.length), arr);
         sort(new BetterHeapSort(arrs), arrs);
-        /*sort(new BetterInsertion(), arr);
-        sort(new Insertion(), arr);
-        sort(new Selection(), arr);*/
-        int[] nealyOrderedArray = generateNearlyOrderedArray(1000000, 1, 200000000);
-        Integer[] nealyOrderedArrays = convert(nealyOrderedArray);
-        sort(new MergeSort(), nealyOrderedArray);
-        sort(new TripleQuick(), nealyOrderedArray);
-        sort(new HeapSort(nealyOrderedArray.length), nealyOrderedArray);
-        sort(new BetterHeapSort(nealyOrderedArrays), nealyOrderedArrays);
+        sort(new SelfHeapSort(), arr);
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
     }
 
     public static void sort(Sort sort, int[] integers) {
