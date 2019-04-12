@@ -29,10 +29,10 @@ public class SelfHeapSort implements Sort {
         while (2 * index + 1 <= lastIndex) {
             int leftIndex = 2 * index + 1;
             int rightIndex = 2 * index + 2;
-            if (rightIndex < arr.length ? arr[leftIndex] < tmp && arr[rightIndex] < tmp : arr[leftIndex] < tmp) {
+            if (rightIndex <= lastIndex ? arr[leftIndex] < tmp && arr[rightIndex] < tmp : arr[leftIndex] < tmp) {
                 break;
             }
-            if (rightIndex < arr.length) {
+            if (rightIndex <= lastIndex) {
                 arr[index] = arr[leftIndex] > arr[rightIndex] ? arr[index = leftIndex] : arr[index = rightIndex];
             } else {
                 arr[index] = arr[index = leftIndex];
