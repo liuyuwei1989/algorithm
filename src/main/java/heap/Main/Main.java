@@ -2,6 +2,7 @@ package heap.Main;
 
 import heap.impl.CompletelyMaxHeap;
 import heap.exception.OutOfHeapBoundException;
+import heap.impl.IndexHeap;
 import sort.util.SortHelper;
 
 
@@ -32,7 +33,7 @@ public class Main {
 
         System.out.println(Arrays.toString(arr));*/
 
-        int[] arr1 = SortHelper.generateArray(10, 1, 100);
+        /*int[] arr1 = SortHelper.generateArray(10, 1, 100);
         Integer[] arrCopy = new Integer[arr1.length];
         for (int i = 0; i < arr1.length; i++) {
             arrCopy[i] = arr1[i];
@@ -46,5 +47,25 @@ public class Main {
 
         System.out.println(Arrays.toString(arrCopy));
 
+        IndexHeap heap = new IndexHeap(arr1);
+        System.out.println(heap);
+
+        System.out.println(Arrays.toString(heap.sort()));*/
+
+        Random random = new Random();
+
+        IndexHeap heap2 = new IndexHeap(100);
+        for (int i = 0; i < 10; i++) {
+            heap2.addItem(random.nextInt(100));
+        }
+        System.out.println(heap2);
+        System.out.println(heap2.popUp());
+        System.out.println(heap2);
+        System.out.println(heap2.popUp());
+        System.out.println(heap2);
+        heap2.addItem(random.nextInt(100));
+        System.out.println(heap2);
+        heap2.change(0, 99);
+        System.out.println(heap2);
     }
 }
