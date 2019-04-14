@@ -1,11 +1,8 @@
 package BinaryTree.impl;
 
 import BinaryTree.inerface.DoSth;
-import com.sun.jmx.remote.internal.ArrayQueue;
 
-import java.lang.reflect.Array;
 import java.util.ArrayDeque;
-import java.util.Map;
 import java.util.Queue;
 
 public class BinarySearchTree<K extends Comparable, V> {
