@@ -3,6 +3,7 @@ package BinaryTree.main;
 import BinaryTree.impl.BinarySearchTree;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class BinaryMain {
@@ -16,10 +17,8 @@ public class BinaryMain {
         int bound = 1000000;
         ArrayList<Integer> keys = new ArrayList<>();
         ArrayList<Long> values = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            keys.add(random.nextInt(bound));
-            values.add(random.nextLong());
-        }
+        keys.addAll(Arrays.asList(9, 7, 13, 5, 8, 11, 16, 14, 12, 6));
+        values.addAll(Arrays.asList(9L, 7L, 13L, 5L, 8L, 11L, 16L, 14L, 12L, 6L));
         BinarySearchTree<Integer, Long> tree = new BinarySearchTree<>();
         for (int i = 0; i < size; i++) {
             tree.insert(keys.get(i), values.get(i));
@@ -40,5 +39,10 @@ public class BinaryMain {
         System.out.println();
         tree.breadthFirstSearch(System.out::print);
         System.out.println();
+        System.out.println(tree.findMinimum());
+        System.out.println(tree.findMaximum());
+        System.out.println(tree.removeMaximum());
+        System.out.println(tree.removeMinimum());
+        tree.removeKey(13);
     }
 }

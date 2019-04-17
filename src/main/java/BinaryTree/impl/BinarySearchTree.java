@@ -50,6 +50,107 @@ public class BinarySearchTree<K extends Comparable, V> {
         }
     }
 
+    public V findMinimum() {
+        return findMinimum(root).value;
+    }
+
+    public V findMaximum() {
+        return findMaximum(root).value;
+    }
+
+    public V removeMinimum() {
+        V tmp = null;
+        if (root != null) {
+            tmp = findMinimum();
+            root = removeMinimum(root);
+        }
+        return root == null ? null : tmp;
+    }
+
+    public V removeMaximum() {
+        V tmp = null;
+        if (root != null) {
+            tmp = findMaximum();
+            root = removeMaximum(root);
+        }
+        return root == null ? null : tmp;
+    }
+
+    public void removeKey(K key) {
+        root = removeKey(root, key);
+    }
+
+    @SuppressWarnings("unchecked")
+    private Node removeKey(Node root, K key) {
+        if (root == null) {
+            root = root;
+        } else if (root.key.compareTo(key) < 0) {
+            root.right = removeKey(root.right, key);
+        } else if (root.key.compareTo(key) > 0) {
+            root.left = removeKey(root.left, key);
+        } else if (root.key.compareTo(key) == 0) {
+            if (root.right != null) {
+                Node tmp = findMinimum(root.right);
+                root.key = tmp.key;
+                root.value = tmp.value;
+                root.right = removeMinimum(root.right);
+            } else {
+                Node tmp = root.left;
+                root.left = null;
+                root = tmp;
+                count--;
+            }
+        }
+
+        return root;
+    }
+
+    private Node removeMinimum(Node root) {
+        if (root.left != null) {
+            root.left = removeMinimum(root.left);
+            return root;
+        } else {
+            Node tmp = root.right;
+            root.right = null;
+            count--;
+            return tmp;
+        }
+    }
+
+    private Node removeMaximum(Node root) {
+        if (root.right != null) {
+            root.right = removeMaximum(root.right);
+            return root;
+        } else {
+            Node tmp = root.left;
+            root.left = null;
+            count--;
+            return tmp;
+        }
+    }
+
+    private Node findMinimum(Node root) {
+        if (root == null) {
+            return null;
+        }
+        if (root.left == null) {
+            return root;
+        } else {
+            return findMinimum(root.left);
+        }
+    }
+
+    private Node findMaximum(Node root) {
+        if (root == null) {
+            return null;
+        }
+        if (root.right == null) {
+            return root;
+        } else {
+            return findMaximum(root.right);
+        }
+    }
+
     private void preOrder(Node root, DoSth<Node> fun) {
         if (root == null)
             return;
