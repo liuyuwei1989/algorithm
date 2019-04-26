@@ -42,6 +42,7 @@ public class CompletelyMaxHeap<T extends Comparable> extends Heap<T> {
         return item;
     }
 
+    @SuppressWarnings("unchecked")
     private void shiftDown(int index) {
         T tmpItem = (T) data[index];
         while (2 * index <= count) {
