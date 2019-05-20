@@ -9,7 +9,7 @@ public class DenseGraph extends Graph {
     private boolean g[][];
 
 
-    public DenseGraph(Integer n, Boolean direct) {
+    public DenseGraph(int n, boolean direct) {
         super(n, direct);
         this.g = new boolean[n][n];
     }

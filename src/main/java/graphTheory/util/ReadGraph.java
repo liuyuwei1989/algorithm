@@ -23,7 +23,7 @@ public class ReadGraph {
             int n = Integer.parseInt(scanner.next());
             int m, count = Integer.parseInt(scanner.next());
             m = count;
-            graph = tClass.getConstructor(Integer.class, Boolean.class).newInstance(n, false);
+            graph = tClass.getConstructor(int.class, boolean.class).newInstance(n, false);
             for (; m > 0; m--) {
                 graph.addEdge(Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
             }

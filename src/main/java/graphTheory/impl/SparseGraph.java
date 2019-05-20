@@ -11,7 +11,7 @@ public class SparseGraph extends Graph {
 
     private List<Integer>[] g;
 
-    public SparseGraph(Integer n, Boolean direct) {
+    public SparseGraph(int n, boolean direct) {
         super(n, direct);
         g = new List[n];
         for (int i = 0; i < n; i++) {
