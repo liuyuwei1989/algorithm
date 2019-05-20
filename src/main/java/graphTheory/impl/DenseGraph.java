@@ -1,21 +1,21 @@
 package graphTheory.impl;
 
+import graphTheory.Graph;
+
 //稠密图 邻接矩阵
-public class DenseGraph {
-    private int n;
-    private int m;
+public class DenseGraph extends Graph {
+
 
     private boolean g[][];
-    private boolean direct;
 
-    public DenseGraph(int n, boolean direct) {
-        this.n = n;
+
+    public DenseGraph(Integer n, Boolean direct) {
+        super(n, direct);
         this.g = new boolean[n][n];
-        this.direct = direct;
     }
 
-    public void connect(int i, int j) {
-        if (isConnected(i, j)) {
+    public void addEdge(int i, int j) {
+        if (hasEdge(i, j)) {
             return;
         }
         g[i][j] = true;
@@ -26,17 +26,25 @@ public class DenseGraph {
 
     }
 
-    public int count() {
-        return m;
-    }
-
-    public boolean isConnected(int i, int j) {
+    @Override
+    public boolean hasEdge(int i, int j) {
         check(i, j);
         return g[i][j];
     }
 
+    @Override
     public Iterator<Integer> iterator(int v) {
         return new AdjIterator(this, v);
+    }
+
+    @Override
+    public void show() {
+        for (int i = 0; i < g.length; i++) {
+            for (int j = 0; j < g[i].length; j++) {
+                System.out.printf((g[i][j] ? 1 : 0) + " ");
+            }
+            System.out.println();
+        }
     }
 
     private void check(int i, int j) throws IndexOutOfBoundsException {
