@@ -1,7 +1,5 @@
 package graphTheory;
 
-import graphTheory.impl.Iterator;
-
 public abstract class Graph {
     protected int n;
     protected int m;
@@ -12,15 +10,19 @@ public abstract class Graph {
         this.direct = direct;
     }
 
-    public int count() {
+    public int edgesCount() {
         return m;
+    }
+
+    public int pointsCount() {
+        return n;
     }
 
     public abstract void addEdge(int i, int j);
 
     public abstract boolean hasEdge(int i, int j);
 
-    public abstract Iterator<Integer> iterator(int v);
+    public abstract Iterator iterator(int v);
 
     public abstract void show();
 }

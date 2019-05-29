@@ -1,6 +1,7 @@
 package graphTheory.impl;
 
 import graphTheory.Graph;
+import graphTheory.Iterator;
 
 //稠密图 邻接矩阵
 public class DenseGraph extends Graph {
@@ -33,7 +34,7 @@ public class DenseGraph extends Graph {
     }
 
     @Override
-    public Iterator<Integer> iterator(int v) {
+    public Iterator iterator(int v) {
         return new AdjIterator(this, v);
     }
 
@@ -53,7 +54,7 @@ public class DenseGraph extends Graph {
         }
     }
 
-    private class AdjIterator implements Iterator<Integer> {
+    private class AdjIterator implements Iterator {
         private boolean[] list;
         private int i;
 
@@ -73,7 +74,7 @@ public class DenseGraph extends Graph {
         }
 
         @Override
-        public Integer next() {
+        public int next() {
             i++;
             for (; i < list.length; i++) {
                 if (list[i]) {

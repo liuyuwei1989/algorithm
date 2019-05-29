@@ -1,6 +1,7 @@
 package graphTheory.impl;
 
 import graphTheory.Graph;
+import graphTheory.Iterator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class SparseGraph extends Graph {
     }
 
     @Override
-    public Iterator<Integer> iterator(int v) {
+    public Iterator iterator(int v) {
         return new AdjIterator(this, v);
     }
 
@@ -56,7 +57,7 @@ public class SparseGraph extends Graph {
         }
     }
 
-    private class AdjIterator implements Iterator<Integer> {
+    private class AdjIterator implements Iterator {
         private List<Integer> list;
         private int i;
 
@@ -71,7 +72,7 @@ public class SparseGraph extends Graph {
         }
 
         @Override
-        public Integer next() {
+        public int next() {
             i++;
             if (i >= list.size())
                 throw new ArrayIndexOutOfBoundsException();

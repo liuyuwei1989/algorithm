@@ -3,10 +3,7 @@ package graphTheory.util;
 import graphTheory.Graph;
 
 import java.io.BufferedInputStream;
-import java.io.InputStream;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class ReadGraph {
@@ -27,8 +24,8 @@ public class ReadGraph {
             for (; m > 0; m--) {
                 graph.addEdge(Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()));
             }
-            if (m > 0 || graph.count() < count) {
-                throw new IndexOutOfBoundsException("edge not enough : " + graph.count() + " : " + (count - m) + " : " + count);
+            if (m > 0 || graph.edgesCount() < count) {
+                throw new IndexOutOfBoundsException("edge not enough : " + graph.edgesCount() + " : " + (count - m) + " : " + count);
             }
         }
         return graph;
