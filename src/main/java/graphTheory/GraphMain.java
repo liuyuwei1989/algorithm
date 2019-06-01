@@ -5,6 +5,7 @@ import graphTheory.impl.SparseGraph;
 import graphTheory.util.Component;
 import graphTheory.util.Path;
 import graphTheory.util.ReadGraph;
+import graphTheory.util.ShortestPath;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -43,10 +44,14 @@ public class GraphMain {
         Component<SparseGraph> sparse_2 = new Component<>(s_graph_2);
         System.out.println(sparse_2.cCount());
 
-        Path dense_path_2 = new Path(d_graph_3, 0);
-        dense_path_2.showPath(6);
+        Path dense_path_3 = new Path(d_graph_3, 0);
+        dense_path_3.showPath(6);
 
-        Path sparse_path_2 = new Path(s_graph_3, 0);
-        sparse_path_2.showPath(6);
+        Path sparse_path_3 = new Path(s_graph_3, 0);
+        sparse_path_3.showPath(6);
+
+        ShortestPath sparse_shortest_path_3 = new ShortestPath(s_graph_3, 0);
+        sparse_shortest_path_3.showPath(6);
+
     }
 }
