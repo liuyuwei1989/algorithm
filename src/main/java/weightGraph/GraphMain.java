@@ -2,6 +2,7 @@ package weightGraph;
 
 import weightGraph.impl.DenseGraph;
 import weightGraph.impl.SparseGraph;
+import weightGraph.util.LazyPrime;
 import weightGraph.util.ReadGraph;
 
 import java.lang.reflect.InvocationTargetException;
@@ -13,7 +14,8 @@ public class GraphMain {
         SparseGraph s_g_1 = graph.generateGraph(SparseGraph.class);
         d_g_1.show();
         s_g_1.show();
-
-
+        LazyPrime prime = new LazyPrime(d_g_1);
+        prime.showPath();
+        System.out.println(prime.shortestLength());
     }
 }

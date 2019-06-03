@@ -2,7 +2,7 @@ package weightGraph;
 
 import java.util.Objects;
 
-public class Edge {
+public class Edge implements Comparable<Edge> {
     private int a, b;
     private double weight;
 
@@ -36,5 +36,10 @@ public class Edge {
     @Override
     public int hashCode() {
         return Objects.hash(a, b);
+    }
+
+    @Override
+    public int compareTo(Edge o) {
+        return new Double(this.weight).compareTo(o.weight);
     }
 }
