@@ -5,6 +5,7 @@ import weightGraph.Graph;
 import weightGraph.Iterator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -13,33 +14,42 @@ public class LazyPrime {
 
     private List<Edge> shortestPath;
 
+    private boolean[] visited;
+
     public LazyPrime(Graph graph) {
         this.graph = graph;
+        this.visited = new boolean[graph.pointsCount()];
+        Arrays.fill(visited, false);
         this.shortestPath = new ArrayList<>(graph.pointsCount() - 1);
-        List<Integer> greenGroup = new ArrayList<>();
-        List<Integer> blueGroup = new ArrayList<>();
-        for (int i = 0; i < graph.pointsCount(); i++) {
-            blueGroup.add(i);
-        }
-        greenGroup.add(blueGroup.remove(0));
-        while (blueGroup.size() != 0) {
-            PriorityQueue<Edge> queue = new PriorityQueue<>();
-            for (Integer i : greenGroup) {
-                Iterator iter = graph.iterator(i);
-                while (iter.hasNext()) {
-                    Edge edge = iter.next();
-                    queue.add(edge);
-                }
-            }
+        visited[0] = true;
+        PriorityQueue<Edge> queue = new PriorityQueue<>();
+        popInQueue(queue, 0);
+        while (!queue.isEmpty()) {
             Edge edge = queue.remove();
-            while (greenGroup.contains(edge.getA()) && greenGroup.contains(edge.getB())) {
-                edge = queue.remove();
+            if (!isVisited(edge)) {
+                this.shortestPath.add(edge);
+                int nextPoint = visited[edge.getA()] ? edge.getB() : edge.getA();
+                visited[nextPoint] = true;
+                popInQueue(queue, nextPoint);
+            } else {
+                continue;
             }
-            int point = greenGroup.contains(edge.getA()) ? edge.getB() : edge.getA();
-            greenGroup.add(point);
-            blueGroup.remove(blueGroup.indexOf(point));
-            this.shortestPath.add(edge);
         }
+    }
+
+    private void popInQueue(PriorityQueue<Edge> queue, int point) {
+        Iterator iter = graph.iterator(point);
+        while (iter.hasNext()) {
+            Edge edge = iter.next();
+            if (isVisited(edge))
+                continue;
+            else
+                queue.add(edge);
+        }
+    }
+
+    private boolean isVisited(Edge edge) {
+        return visited[edge.getA()] && visited[edge.getB()];
     }
 
     public List<Edge> getShortestPath() {
