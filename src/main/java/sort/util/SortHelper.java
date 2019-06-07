@@ -17,6 +17,13 @@ public class SortHelper {
         return array;
     }
 
+    public static <T> T[] swap(T[] array, int i, int j) {
+        T tmp = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
+        return array;
+    }
+
     public static int[] generateArray(int i, int left, int right) {
         int[] integers = new int[i];
         Random random = new Random();

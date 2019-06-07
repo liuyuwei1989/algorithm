@@ -12,9 +12,11 @@ public class SparseGraph extends Graph {
 
 
     private List<Edge>[] g;
+    private List<Edge> edges;
 
     public SparseGraph(int n, boolean direct) {
         super(n, direct);
+        edges = new ArrayList<>();
         g = new List[n];
         for (int i = 0; i < n; i++) {
             g[i] = new ArrayList<>();
@@ -23,10 +25,16 @@ public class SparseGraph extends Graph {
 
     @Override
     public void addEdge(int i, int j, double weight) {
-        g[i].remove(new Edge(i, j, 0));
-        if (!direct) {
-            g[j].remove(new Edge(j, i, 0));
+        if (hasEdge(i, j)) {
+            g[i].remove(new Edge(i, j, 0));
+            edges.remove(new Edge(i, j, 0));
+            m--;
+            if (!direct) {
+                g[j].remove(new Edge(j, i, 0));
+                edges.remove(new Edge(j, i, 0));
+            }
         }
+
 
         g[i].add(new Edge(i, j, weight));
         if (!direct)
@@ -50,10 +58,15 @@ public class SparseGraph extends Graph {
         for (int i = 0; i < g.length; i++) {
             System.out.printf(i + " : ");
             for (int j = 0; j < g[i].size(); j++) {
-                System.out.printf( "To:" + g[i].get(j).getB() +" wt:"  + g[i].get(j).getWeight() + " ");
+                System.out.printf("To:" + g[i].get(j).getB() + " wt:" + g[i].get(j).getWeight() + " ");
             }
             System.out.println();
         }
+    }
+
+    @Override
+    public List<Edge> allEdges() {
+        return edges;
     }
 
 

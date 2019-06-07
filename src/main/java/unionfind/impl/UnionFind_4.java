@@ -37,7 +37,7 @@ public class UnionFind_4 {
         } else if (this.rank[jFather] < this.rank[iFather]) {
             this.point[jFather] = iFather;
         } else if (this.rank[jFather] == this.rank[iFather]) {
-            this.rank[jFather] = iFather;
+            this.point[jFather] = iFather;
             this.rank[iFather] += 1;
         }
     }

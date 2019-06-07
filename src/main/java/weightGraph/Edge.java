@@ -1,5 +1,6 @@
 package weightGraph;
 
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class Edge implements Comparable<Edge> {
@@ -22,6 +23,13 @@ public class Edge implements Comparable<Edge> {
 
     public int getB() {
         return b;
+    }
+
+    public int other(int o) {
+        if (o == a || o == b)
+            return o == a ? b : a;
+        else
+            throw new NoSuchElementException("Please input " + a + " or " + b + " for " + this);
     }
 
     @Override

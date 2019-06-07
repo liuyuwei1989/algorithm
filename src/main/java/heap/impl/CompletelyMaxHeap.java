@@ -5,6 +5,10 @@ import heap.exception.OutOfHeapBoundException;
 
 import static heap.util.Util.swap;
 
+/**
+ * 完全最大堆
+ * @param <T>
+ */
 public class CompletelyMaxHeap<T extends Comparable> extends Heap<T> {
 
     @Override

@@ -4,27 +4,36 @@ import weightGraph.Edge;
 import weightGraph.Graph;
 import weightGraph.Iterator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //稠密图 邻接矩阵
 public class DenseGraph extends Graph {
 
 
     private Edge g[][];
 
+    private List<Edge> edges;
+
 
     public DenseGraph(int n, boolean direct) {
         super(n, direct);
         this.g = new Edge[n][n];
+        edges = new ArrayList<>();
     }
 
     public void addEdge(int i, int j, double weight) {
         if (hasEdge(i, j)) {
+            edges.remove(g[i][j]);
             g[i][j] = null;
             m--;
             if (!direct) {
                 g[j][i] = null;
+                edges.remove(g[j][i]);
             }
         }
         g[i][j] = new Edge(i, j, weight);
+        edges.add(g[i][j]);
         m++;
         if (!direct) {
             g[j][i] = new Edge(j, i, weight);
@@ -51,6 +60,11 @@ public class DenseGraph extends Graph {
             }
             System.out.println();
         }
+    }
+
+    @Override
+    public List<Edge> allEdges() {
+        return this.edges;
     }
 
     private void check(int i, int j) throws IndexOutOfBoundsException {

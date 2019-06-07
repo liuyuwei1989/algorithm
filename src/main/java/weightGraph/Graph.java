@@ -1,5 +1,7 @@
 package weightGraph;
 
+import java.util.List;
+
 public abstract class Graph {
     protected int n;
     protected int m;
@@ -25,4 +27,6 @@ public abstract class Graph {
     public abstract Iterator iterator(int v);
 
     public abstract void show();
+
+    public abstract List<Edge> allEdges();
 }
