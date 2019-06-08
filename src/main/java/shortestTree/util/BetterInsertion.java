@@ -1,6 +1,6 @@
-package weightGraph.util;
+package shortestTree.util;
 
-import weightGraph.Sort;
+import shortestTree.Sort;
 
 public class BetterInsertion<T extends Comparable<T>> implements Sort<T> {
     @Override

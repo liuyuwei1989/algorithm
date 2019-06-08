@@ -1,6 +1,6 @@
-package weightGraph.util;
+package shortestTree.util;
 
-import weightGraph.Graph;
+import shortestTree.Graph;
 
 import java.io.BufferedInputStream;
 import java.lang.reflect.InvocationTargetException;

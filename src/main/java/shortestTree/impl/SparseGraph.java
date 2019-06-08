@@ -1,8 +1,8 @@
-package weightGraph.impl;
+package shortestTree.impl;
 
-import weightGraph.Edge;
-import weightGraph.Graph;
-import weightGraph.Iterator;
+import shortestTree.Edge;
+import shortestTree.Graph;
+import shortestTree.Iterator;
 
 import java.util.ArrayList;
 import java.util.List;

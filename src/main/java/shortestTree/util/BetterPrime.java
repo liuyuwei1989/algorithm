@@ -1,13 +1,12 @@
-package weightGraph.util;
+package shortestTree.util;
 
 import heap.exception.OutOfHeapBoundException;
 import heap.impl.MinIndexHeap;
-import weightGraph.Edge;
-import weightGraph.Graph;
-import weightGraph.Iterator;
+import shortestTree.Edge;
+import shortestTree.Graph;
+import shortestTree.Iterator;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class BetterPrime {

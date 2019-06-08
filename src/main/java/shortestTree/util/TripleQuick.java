@@ -1,7 +1,7 @@
-package weightGraph.util;
+package shortestTree.util;
 
 
-import weightGraph.Sort;
+import shortestTree.Sort;
 
 import java.util.Random;
 

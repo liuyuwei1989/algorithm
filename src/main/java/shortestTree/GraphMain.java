@@ -1,12 +1,12 @@
-package weightGraph;
+package shortestTree;
 
 import heap.exception.OutOfHeapBoundException;
-import weightGraph.impl.DenseGraph;
-import weightGraph.impl.SparseGraph;
-import weightGraph.util.BetterPrime;
-import weightGraph.util.Krusk;
-import weightGraph.util.LazyPrime;
-import weightGraph.util.ReadGraph;
+import shortestTree.impl.DenseGraph;
+import shortestTree.impl.SparseGraph;
+import shortestTree.util.BetterPrime;
+import shortestTree.util.Krusk;
+import shortestTree.util.LazyPrime;
+import shortestTree.util.ReadGraph;
 
 import java.lang.reflect.InvocationTargetException;
 

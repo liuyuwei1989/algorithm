@@ -1,4 +1,4 @@
-package weightGraph;
+package shortestTree;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package weightGraph.util;
+package shortestTree.util;
 
 import unionfind.impl.UnionFind_4;
-import weightGraph.Edge;
-import weightGraph.Graph;
+import shortestTree.Edge;
+import shortestTree.Graph;
 
 import java.util.ArrayList;
 import java.util.List;

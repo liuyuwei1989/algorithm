@@ -1,4 +1,4 @@
-package weightGraph;
+package shortestTree;
 
 public interface Iterator {
     boolean hasNext();
