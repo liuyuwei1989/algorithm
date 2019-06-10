@@ -39,7 +39,7 @@ public class ReadGraph {
             m = count;
             graph = tClass.getConstructor(int.class, boolean.class).newInstance(n, true);
             for (; m > 0; m--) {
-                graph.addEdge(Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()), Double.parseDouble("0" + scanner.next()));
+                graph.addEdge(Integer.parseInt(scanner.next()), Integer.parseInt(scanner.next()), Double.parseDouble(scanner.next()));
             }
             if (m > 0 || graph.edgesCount() < count) {
                 throw new IndexOutOfBoundsException("edge not enough : " + graph.edgesCount() + " : " + (count - m) + " : " + count);

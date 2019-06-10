@@ -7,7 +7,7 @@ import shortestTree.util.ReadGraph;
 
 public class ShortestPathMain {
     public static void main(String[] args) throws Exception {
-        ReadGraph graph = new ReadGraph("WGraph2.txt");
+        /*ReadGraph graph = new ReadGraph("WGraph2.txt");
         SparseGraph s_p_2 = graph.generateGraph(SparseGraph.class);
 
         ShortestPath path = new ShortestPath(s_p_2, 0);
@@ -17,10 +17,18 @@ public class ShortestPathMain {
                 path.showPath(i);
             }
         }
-
+*/
         ReadGraph graph1 = new ReadGraph("WGraph3.txt");
         SparseGraph s_p_3 = graph1.generateDirectGraph(SparseGraph.class);
 
         BellmanFord bellmanFord = new BellmanFord(s_p_3, 0);
+
+        for (int i = 1; i < s_p_3.pointsCount(); i++) {
+            if (bellmanFord.isConnect(i)) {
+                System.out.println("0 to " + i + " : " + bellmanFord.distance(i));
+                bellmanFord.showPath(i);
+            }
+        }
+
     }
 }
